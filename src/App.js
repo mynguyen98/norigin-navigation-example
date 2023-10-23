@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+// eslint-disable-next-line import/no-extraneous-dependencies
+// eslint-disable-next-line import/no-extraneous-dependencies
+import styled, { createGlobalStyle } from 'styled-components'
+
+import { init } from '@noriginmedia/norigin-spatial-navigation'
+
+import Menu from './Menu'
+import Content from './Content'
+init({
+  debug: false,
+  visualDebug: true,
+  // useGetBoundingClientRect:true
+})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <React.StrictMode>
+      <AppContainer>
+        <Menu focusKey='MENU' />
+        <Content />
+      </AppContainer>
+    </React.StrictMode>
+  )
 }
+export default App
 
-export default App;
+const AppContainer = styled.div`
+  background-color: #221c35;
+  /* width: 1440px; */
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+`
